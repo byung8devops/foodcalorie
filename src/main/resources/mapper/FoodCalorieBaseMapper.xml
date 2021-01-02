@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byung8.foodcalorie.mapper.FoodCalorieBaseMapper">
+
+	<insert id="registerFoodCalorieBase" parameterType="com.byung8.foodcalorie.domain.FoodCalorieBase">
+	INSERT INTO TB_FS_FDCL (
+	    FDCL_NM
+	  , FD_TP_ID
+	  , UNT_TP_ID
+	  , UNT_CL_VAL
+	) VALUES (
+	    #{foodName}
+	  , #{foodTypeId}
+	  , #{unitTypeId}
+	  , #{unitCalorieVal}
+	)
+	</insert>
+
+	<select id="findFoodCalorieById" parameterType="int" resultType="com.byung8.foodcalorie.domain.FoodCalorieBase">
+		SELECT
+		  a.FDCL_ID as foodId
+		, a.FDCL_NM as foodName
+		, a.FD_TP_ID as foodTypeId
+		, (SELECT b.CD_NM FROM TB_CMM_CD b WHERE a.FD_TP_ID=b.CD_ID AND b.GRP_VAL='03') as foodTypeName
+		, a.UNT_TP_ID as unitTypeId
+		, (SELECT b.FS_NM_ENG FROM TB_FS_UNIT b WHERE a.UNT_TP_ID=b.FS_ID) as unitTypeName
+		, a.UNT_CL_VAL as unitCalorieVal
+		, a.USE_YN as useYn
+		, a.REG_DT as regDt
+		, a.UDP_DT as udpDt
+		FROM TB_FS_FDCL a
+		WHERE a.USE_YN = 'Y'
+		AND a.FDCL_ID = ${value}
+	</select>
+	
+	<select id="findFoodCalorieList" parameterType="com.byung8.foodcalorie.domain.FoodCalorieBase" resultType="com.byung8.foodcalorie.domain.FoodCalorieBase">
+		SELECT
+		  a.FDCL_ID as foodId
+		, a.FDCL_NM as foodName
+		, a.FD_TP_ID as foodTypeId
+		, (SELECT b.CD_NM FROM TB_CMM_CD b WHERE a.FD_TP_ID=b.CD_ID AND b.GRP_VAL='03') as foodTypeName
+		, a.UNT_TP_ID as unitTypeId
+		, (SELECT b.FS_NM_ENG FROM TB_FS_UNIT b WHERE a.UNT_TP_ID=b.FS_ID) as unitTypeName
+		, a.UNT_CL_VAL as unitCalorieVal
+		, a.USE_YN as useYn
+		, a.REG_DT as regDt
+		, a.UDP_DT as udpDt
+		FROM TB_FS_FDCL a
+		WHERE a.USE_YN = 'Y'
+		<if test="foodTypeId > 0">
+		AND a.FD_TP_ID = #{foodTypeId}
+		</if>
+		<if test="foodName != null and foodName != 'all' and foodName != 'All' and foodName != 'ALL'">
+		AND a.FDCL_NM LIKE CONCAT('%',#{foodName},'%')
+		</if>
+	</select>
+	
+</mapper>
