@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: foodcalorie
+  name: foodcalorie
+  namespace: fitness
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foodcalorie
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: foodcalorie
+    spec:
+      containers:
+      - image: kube-01.bd.com:5000/fitness/foodcalorie:0.1
+        name: foodcalorie
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: foodcalorie
+  name: foodcalorie
+  namespace: fitness
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: foodcalorie
+  type: ClusterIP
+status:
+  loadBalancer: {}

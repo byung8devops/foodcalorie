@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-@RequestMapping(value = "/api/v1/calorie")
+@RequestMapping(value = "/calorie")
 public class FoodCalorieController {
 
 	@Autowired

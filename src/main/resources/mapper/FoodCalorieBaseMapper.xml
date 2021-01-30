@@ -7,7 +7,7 @@
 	INSERT INTO TB_FS_FDCL (
 	    FDCL_NM
 	  , FD_TP_ID
-	  , UNT_TP_ID
+	  , FD_UNIT_ID
 	  , UNT_CL_VAL
 	) VALUES (
 	    #{foodName}
@@ -23,8 +23,8 @@
 		, a.FDCL_NM as foodName
 		, a.FD_TP_ID as foodTypeId
 		, (SELECT b.CD_NM FROM TB_CMM_CD b WHERE a.FD_TP_ID=b.CD_ID AND b.GRP_VAL='03') as foodTypeName
-		, a.UNT_TP_ID as unitTypeId
-		, (SELECT b.FS_NM_ENG FROM TB_FS_UNIT b WHERE a.UNT_TP_ID=b.FS_ID) as unitTypeName
+		, a.FD_UNIT_ID as unitTypeId
+		, (SELECT b.FS_NM_ENG FROM TB_FS_UNIT b WHERE a.FD_UNIT_ID=b.FS_ID) as unitTypeName
 		, a.UNT_CL_VAL as unitCalorieVal
 		, a.USE_YN as useYn
 		, a.REG_DT as regDt
@@ -40,8 +40,8 @@
 		, a.FDCL_NM as foodName
 		, a.FD_TP_ID as foodTypeId
 		, (SELECT b.CD_NM FROM TB_CMM_CD b WHERE a.FD_TP_ID=b.CD_ID AND b.GRP_VAL='03') as foodTypeName
-		, a.UNT_TP_ID as unitTypeId
-		, (SELECT b.FS_NM_ENG FROM TB_FS_UNIT b WHERE a.UNT_TP_ID=b.FS_ID) as unitTypeName
+		, a.FD_UNIT_ID as unitTypeId
+		, (SELECT b.FS_NM_ENG FROM TB_FS_UNIT b WHERE a.FD_UNIT_ID=b.FS_ID) as unitTypeName
 		, a.UNT_CL_VAL as unitCalorieVal
 		, a.USE_YN as useYn
 		, a.REG_DT as regDt

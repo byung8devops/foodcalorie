@@ -17,7 +17,7 @@ public class FoodCalorieBase {
 	, a.FD_TP_ID as foodTypeId
 	, (SELECT b.CD_NM FROM TB_CMM_CD b WHERE a.FD_TP_ID=b.CD_ID AND b.GRP_VAL='03') as foodTypeName
 	, a.UNT_TP_ID as unitTypeId
-	, (SELECT b.CD_NM FROM TB_CMM_CD b WHERE a.UNT_TP_ID=b.CD_ID AND b.GRP_VAL='04') as unitTypeName
+	, (SELECT b.FDCL_NM FROM TB_FS_UNIT b WHERE a.FS_TP_ID=b.FS_UNIT_ID) as unitTypeName
 	, a.UNT_CL_VAL as unitCalorieVal
 	, a.USE_YN as useYn
 	, a.REG_DT as regDt
