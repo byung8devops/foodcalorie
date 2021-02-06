@@ -30,6 +30,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: foodcalorie
+    release: fitness
   name: foodcalorie
   namespace: fitness
 spec:
