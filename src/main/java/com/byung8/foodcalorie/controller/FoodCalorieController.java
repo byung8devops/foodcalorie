@@ -104,4 +104,26 @@ public class FoodCalorieController {
 			}
 		}
 	}
+
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public ResponseEntity<String> getFoodCalorieAllList() {
+
+		String txid = txId();
+		try {
+			Result result = dietService.getFoodCalorieAllList(txid);
+			
+			return new ResponseEntity<String>(result.toJson(), result.status());
+		} catch (Exception e) {
+			log.error("Failed to get foodCalorieList", e);
+			if (e instanceof NullPointerException) {
+				return new ResponseEntity<String>(HttpStatus.EXPECTATION_FAILED);
+			} else if (e instanceof Byung8Exception) {
+				Result result = new Result(txid, IResult.ERROR, "").putValue("error", e.getMessage());
+				return new ResponseEntity<String>(result.toJson(), HttpStatus.EXPECTATION_FAILED);
+			} else {
+				Result result = new Result(txid, IResult.ERROR, "").putValue("error", e);
+				return new ResponseEntity<String>(result.toJson(), HttpStatus.EXPECTATION_FAILED);
+			}
+		}
+	}
 }

@@ -11,4 +11,5 @@ public interface FoodCalorieBaseMapper {
 	int registerFoodCalorieBase(FoodCalorieBase foodCalorieBase) throws SQLException;
 	FoodCalorieBase findFoodCalorieById(int id) throws SQLException;
 	List<FoodCalorieBase> findFoodCalorieList(FoodCalorieBase foodCalorieBase) throws SQLException;
+	List<FoodCalorieBase> findFoodCalorieAllList() throws SQLException;
 }

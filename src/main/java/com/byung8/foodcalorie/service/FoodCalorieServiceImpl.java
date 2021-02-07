@@ -63,4 +63,21 @@ public class FoodCalorieServiceImpl implements FoodCalorieService {
 		return result;
 	}
 
+	@Override
+	public Result getFoodCalorieAllList(String txid) throws Byung8Exception {
+		Result result = null;
+		try {
+			List<FoodCalorieBase> list = foodCalorieBaseMapper.findFoodCalorieAllList();
+			if (log.isInfoEnabled()) {
+				log.info("foodAll");
+			}
+			result = new Result(txid, Result.OK).putValue("foodCalorieAllList", list);
+		} catch(SQLException e) {
+			log.error("getFoodCaloire", e);
+			throw new Byung8Exception(e);
+		}
+		return result;
+	}
+
+
 }

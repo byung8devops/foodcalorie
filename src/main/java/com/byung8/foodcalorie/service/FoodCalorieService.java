@@ -8,4 +8,5 @@ public interface FoodCalorieService {
 	Result registerFoodCalorie(FoodCalorieBase foodCalorie, String txid) throws Byung8Exception;
 	Result getFoodCaloire(int foodId, String txid) throws Byung8Exception;
 	Result getFoodCalorieList(FoodCalorieBase foodCalorie, String txid) throws Byung8Exception;
+	Result getFoodCalorieAllList(String txid) throws Byung8Exception;
 }
