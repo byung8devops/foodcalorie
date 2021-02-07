@@ -71,7 +71,7 @@ public class FoodCalorieServiceImpl implements FoodCalorieService {
 			if (log.isInfoEnabled()) {
 				log.info("foodAll");
 			}
-			result = new Result(txid, Result.OK).putValue("foodCalorieAllList", list);
+			result = new Result(txid, Result.OK).putValue("findFoodCalorieAllList", list);
 		} catch(SQLException e) {
 			log.error("getFoodCaloire", e);
 			throw new Byung8Exception(e);

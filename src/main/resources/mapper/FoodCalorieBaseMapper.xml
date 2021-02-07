@@ -57,7 +57,7 @@
 	</select>
 	
 	
-	<select id="findFoodCalorieAllList" parameterType="com.byung8.foodcalorie.domain.FoodCalorieBase">
+	<select id="findFoodCalorieAllList" resultType="com.byung8.foodcalorie.domain.FoodCalorieBase">
 		SELECT
 		  a.FDCL_ID as foodId
 		, a.FDCL_NM as foodName
