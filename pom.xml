@@ -8,7 +8,7 @@
         <version>2.3.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.byung8</groupId>
+    <groupId>fitness</groupId>
     <artifactId>foodcalorie</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>foodcalorie</name>
@@ -119,6 +119,13 @@
            <artifactId>springfox-swagger-ui</artifactId>
            <version>2.9.1</version>
        </dependency>
+
+       <dependency>
+           <groupId>fitness</groupId>
+           <artifactId>shared</artifactId>
+           <version>0.0.1-SNAPSHOT</version>
+       </dependency>
+       
     </dependencies>
 
     <build>
