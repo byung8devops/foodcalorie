@@ -30,9 +30,9 @@ spring:
 spring:
   profiles: prod
   pid:
-    file: /foodcalorie/run/foodcalorie.pid
+    file: /data/foodcalorie/run/foodcalorie.pid
   datasource:
-    url: jdbc:mysql://192.168.0.109:3306/fitness?useUnicode=yes&characterEncoding=UTF-8
+    url: jdbc:mysql://10.10.50.104:3306/fitness?useUnicode=yes&characterEncoding=UTF-8
     username: byung8
     password: 1q2w3e4r5t
     driverClassName: com.mysql.jdbc.Driver
@@ -40,9 +40,14 @@ logging:
   config: classpath:logback-prod.xml
 log:
   file:
-    path: "/foodcalorie/logs"
+    path: "/data/foodcalorie/logs"
 server:
-  port: 8080
+  port: 8083
+  tomcat:
+    accesslog:
+      pattern: "%{yyyy-MM-dd HH:mm:ss}t\t%s\t%r\t%{User-Agent}i\t%{Referer}i\t%a\t%b\t%F"
+      enabled: true
+    basedir: "/data/foodcalorie/logs"
   servlet:
     encoding:
       charset: UTF-8
@@ -52,9 +57,9 @@ server:
 spring:
   profiles: local
   pid:
-    file: E://dev/work/foodcalorie/run/foodcalorie.pid
+    file: D://dev/work/foodcalorie/run/foodcalorie.pid
   datasource:
-    url: jdbc:mysql://192.168.0.109:3306/fitness
+    url: jdbc:mysql://192.168.0.11:13306/fitness
     username: byung8
     password: 1q2w3e4r5t
     driverClassName: com.mysql.jdbc.Driver
@@ -62,9 +67,14 @@ logging:
   config: classpath:logback-local.xml
 log:
   file:
-    path: "E://dev/work/foodcalorie/logs"
+    path: "D://dev/work/foodcalorie/logs"
 server:
-  port: 8082
+  port: 8083
+  tomcat:
+    accesslog:
+      pattern: "%{yyyy-MM-dd HH:mm:ss}t\t%s\t%r\t%{User-Agent}i\t%{Referer}i\t%a\t%b\t%F"
+      enabled: true
+    basedir: "D://dev/work/foodcalorie/logs"
   servlet:
     encoding:
       charset: UTF-8
