@@ -19,7 +19,7 @@ spec:
         app: foodcalorie
     spec:
       containers:
-      - image: kube-01.bd.com:5000/fitness/foodcalorie:0.3
+      - image: gw01.bd.com:5000/fitness/foodcalorie:0.2
         name: foodcalorie
         readinessProbe:
           httpGet:
