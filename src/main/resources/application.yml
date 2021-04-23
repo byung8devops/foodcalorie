@@ -54,7 +54,7 @@ spring:
   pid:
     file: E://dev/work/foodcalorie/run/foodcalorie.pid
   datasource:
-    url: jdbc:mysql://192.168.0.109:3306/fitness
+    url: jdbc:mysql://192.168.0.2:13306/fitness
     username: byung8
     password: 1q2w3e4r5t
     driverClassName: com.mysql.jdbc.Driver
