@@ -52,7 +52,7 @@ server:
 spring:
   profiles: local
   pid:
-    file: E://dev/work/foodcalorie/run/foodcalorie.pid
+    file: D://dev/work/foodcalorie/run/foodcalorie.pid
   datasource:
     url: jdbc:mysql://192.168.0.2:13306/fitness
     username: byung8
@@ -62,7 +62,7 @@ logging:
   config: classpath:logback-local.xml
 log:
   file:
-    path: "E://dev/work/foodcalorie/logs"
+    path: "D://dev/work/foodcalorie/logs"
 server:
   port: 8082
   servlet:
